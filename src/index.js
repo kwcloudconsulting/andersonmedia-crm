@@ -11,6 +11,7 @@ import {
   getWhat,
   listWhats,
 } from "./graphql/queries";
+import fetch from "node-fetch";
 
 import awsExports from "./aws-exports";
 

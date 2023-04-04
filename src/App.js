@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { listWhos, listWheres, listWhats } from "./graphql/queries";
+import fetch from "node-fetch";
 
 const initialState = {
   whos: [],
