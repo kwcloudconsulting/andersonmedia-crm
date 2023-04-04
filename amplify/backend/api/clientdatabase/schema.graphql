@@ -1,0 +1,29 @@
+type Who @model {
+  id: ID!
+  name: String!
+  phone: String!
+  email: String!
+  website: String!
+}
+
+type Where @model {
+  id: ID!
+  name: String!
+  address: String!
+  city: String!
+  state: String!
+  zip: String!
+  phone: String!
+  email: String!
+  website: String!
+}
+
+type What @model {
+  id: ID!
+  small_business: Boolean!
+  large_business: Boolean!
+  government_agency: Boolean!
+  non_profit: Boolean!
+  lender: Boolean!
+  contractor: Boolean!
+}
