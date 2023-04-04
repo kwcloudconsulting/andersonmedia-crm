@@ -1,5 +1,7 @@
 // eslint-disable */
 import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
 import { Amplify, API, graphqlOperation } from "aws-amplify";
 import { createWho, createWhat, createWhere } from "./graphql/mutations";
 import {
