@@ -12,11 +12,11 @@
       "AmplifyAppId": "d2quhq5k8k2m59"
     },
     "categories": {
-      "api": {
-        "clientdatabase": {}
-      },
       "auth": {
         "clientdatabasea30c4e90": {}
+      },
+      "api": {
+        "andersonjamescrm": {}
       }
     }
   }

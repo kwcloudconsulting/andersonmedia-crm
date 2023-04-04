@@ -14,35 +14,29 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type WhereUpdateFormInputValues = {
-    name?: string;
+    business_name?: string;
     address?: string;
     city?: string;
     state?: string;
     zip?: string;
-    phone?: string;
-    email?: string;
     website?: string;
 };
 export declare type WhereUpdateFormValidationValues = {
-    name?: ValidationFunction<string>;
+    business_name?: ValidationFunction<string>;
     address?: ValidationFunction<string>;
     city?: ValidationFunction<string>;
     state?: ValidationFunction<string>;
     zip?: ValidationFunction<string>;
-    phone?: ValidationFunction<string>;
-    email?: ValidationFunction<string>;
     website?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type WhereUpdateFormOverridesProps = {
     WhereUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
-    name?: PrimitiveOverrideProps<TextFieldProps>;
+    business_name?: PrimitiveOverrideProps<TextFieldProps>;
     address?: PrimitiveOverrideProps<TextFieldProps>;
     city?: PrimitiveOverrideProps<TextFieldProps>;
     state?: PrimitiveOverrideProps<TextFieldProps>;
     zip?: PrimitiveOverrideProps<TextFieldProps>;
-    phone?: PrimitiveOverrideProps<TextFieldProps>;
-    email?: PrimitiveOverrideProps<TextFieldProps>;
     website?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type WhereUpdateFormProps = React.PropsWithChildren<{

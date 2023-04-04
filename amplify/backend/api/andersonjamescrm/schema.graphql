@@ -1,24 +1,22 @@
-type Who @model {
+type Who @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
-  phone: String!
-  email: String!
-  website: String!
+  phone: AWSPhone!
+  email: AWSEmail!
+  website: AWSURL!
 }
 
-type Where @model {
+type Where @model @auth(rules: [{allow: public}]) {
   id: ID!
-  name: String!
+  business_name: String!
   address: String!
   city: String!
   state: String!
   zip: String!
-  phone: String!
-  email: String!
-  website: String!
+  website: AWSURL!
 }
 
-type What @model {
+type What @model @auth(rules: [{allow: public}]) {
   id: ID!
   small_business: Boolean!
   large_business: Boolean!
@@ -27,3 +25,4 @@ type What @model {
   lender: Boolean!
   contractor: Boolean!
 }
+ 

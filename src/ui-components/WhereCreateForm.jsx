@@ -23,44 +23,38 @@ export default function WhereCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    name: "",
+    business_name: "",
     address: "",
     city: "",
     state: "",
     zip: "",
-    phone: "",
-    email: "",
     website: "",
   };
-  const [name, setName] = React.useState(initialValues.name);
+  const [business_name, setBusiness_name] = React.useState(
+    initialValues.business_name
+  );
   const [address, setAddress] = React.useState(initialValues.address);
   const [city, setCity] = React.useState(initialValues.city);
   const [state, setState] = React.useState(initialValues.state);
   const [zip, setZip] = React.useState(initialValues.zip);
-  const [phone, setPhone] = React.useState(initialValues.phone);
-  const [email, setEmail] = React.useState(initialValues.email);
   const [website, setWebsite] = React.useState(initialValues.website);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setName(initialValues.name);
+    setBusiness_name(initialValues.business_name);
     setAddress(initialValues.address);
     setCity(initialValues.city);
     setState(initialValues.state);
     setZip(initialValues.zip);
-    setPhone(initialValues.phone);
-    setEmail(initialValues.email);
     setWebsite(initialValues.website);
     setErrors({});
   };
   const validations = {
-    name: [{ type: "Required" }],
+    business_name: [{ type: "Required" }],
     address: [{ type: "Required" }],
     city: [{ type: "Required" }],
     state: [{ type: "Required" }],
     zip: [{ type: "Required" }],
-    phone: [{ type: "Required" }],
-    email: [{ type: "Required" }],
-    website: [{ type: "Required" }],
+    website: [{ type: "Required" }, { type: "URL" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -88,13 +82,11 @@ export default function WhereCreateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          name,
+          business_name,
           address,
           city,
           state,
           zip,
-          phone,
-          email,
           website,
         };
         const validationResponses = await Promise.all(
@@ -142,35 +134,33 @@ export default function WhereCreateForm(props) {
       {...rest}
     >
       <TextField
-        label="Name"
+        label="Business name"
         isRequired={true}
         isReadOnly={false}
-        value={name}
+        value={business_name}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              name: value,
+              business_name: value,
               address,
               city,
               state,
               zip,
-              phone,
-              email,
               website,
             };
             const result = onChange(modelFields);
-            value = result?.name ?? value;
+            value = result?.business_name ?? value;
           }
-          if (errors.name?.hasError) {
-            runValidationTasks("name", value);
+          if (errors.business_name?.hasError) {
+            runValidationTasks("business_name", value);
           }
-          setName(value);
+          setBusiness_name(value);
         }}
-        onBlur={() => runValidationTasks("name", name)}
-        errorMessage={errors.name?.errorMessage}
-        hasError={errors.name?.hasError}
-        {...getOverrideProps(overrides, "name")}
+        onBlur={() => runValidationTasks("business_name", business_name)}
+        errorMessage={errors.business_name?.errorMessage}
+        hasError={errors.business_name?.hasError}
+        {...getOverrideProps(overrides, "business_name")}
       ></TextField>
       <TextField
         label="Address"
@@ -181,13 +171,11 @@ export default function WhereCreateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              name,
+              business_name,
               address: value,
               city,
               state,
               zip,
-              phone,
-              email,
               website,
             };
             const result = onChange(modelFields);
@@ -212,13 +200,11 @@ export default function WhereCreateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              name,
+              business_name,
               address,
               city: value,
               state,
               zip,
-              phone,
-              email,
               website,
             };
             const result = onChange(modelFields);
@@ -243,13 +229,11 @@ export default function WhereCreateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              name,
+              business_name,
               address,
               city,
               state: value,
               zip,
-              phone,
-              email,
               website,
             };
             const result = onChange(modelFields);
@@ -274,13 +258,11 @@ export default function WhereCreateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              name,
+              business_name,
               address,
               city,
               state,
               zip: value,
-              phone,
-              email,
               website,
             };
             const result = onChange(modelFields);
@@ -297,68 +279,6 @@ export default function WhereCreateForm(props) {
         {...getOverrideProps(overrides, "zip")}
       ></TextField>
       <TextField
-        label="Phone"
-        isRequired={true}
-        isReadOnly={false}
-        value={phone}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              address,
-              city,
-              state,
-              zip,
-              phone: value,
-              email,
-              website,
-            };
-            const result = onChange(modelFields);
-            value = result?.phone ?? value;
-          }
-          if (errors.phone?.hasError) {
-            runValidationTasks("phone", value);
-          }
-          setPhone(value);
-        }}
-        onBlur={() => runValidationTasks("phone", phone)}
-        errorMessage={errors.phone?.errorMessage}
-        hasError={errors.phone?.hasError}
-        {...getOverrideProps(overrides, "phone")}
-      ></TextField>
-      <TextField
-        label="Email"
-        isRequired={true}
-        isReadOnly={false}
-        value={email}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              address,
-              city,
-              state,
-              zip,
-              phone,
-              email: value,
-              website,
-            };
-            const result = onChange(modelFields);
-            value = result?.email ?? value;
-          }
-          if (errors.email?.hasError) {
-            runValidationTasks("email", value);
-          }
-          setEmail(value);
-        }}
-        onBlur={() => runValidationTasks("email", email)}
-        errorMessage={errors.email?.errorMessage}
-        hasError={errors.email?.hasError}
-        {...getOverrideProps(overrides, "email")}
-      ></TextField>
-      <TextField
         label="Website"
         isRequired={true}
         isReadOnly={false}
@@ -367,13 +287,11 @@ export default function WhereCreateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              name,
+              business_name,
               address,
               city,
               state,
               zip,
-              phone,
-              email,
               website: value,
             };
             const result = onChange(modelFields);

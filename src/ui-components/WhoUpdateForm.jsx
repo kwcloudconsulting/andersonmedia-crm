@@ -55,9 +55,9 @@ export default function WhoUpdateForm(props) {
   React.useEffect(resetStateValues, [whoRecord]);
   const validations = {
     name: [{ type: "Required" }],
-    phone: [{ type: "Required" }],
-    email: [{ type: "Required" }],
-    website: [{ type: "Required" }],
+    phone: [{ type: "Required" }, { type: "Phone" }],
+    email: [{ type: "Required" }, { type: "Email" }],
+    website: [{ type: "Required" }, { type: "URL" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -166,6 +166,7 @@ export default function WhoUpdateForm(props) {
         label="Phone"
         isRequired={true}
         isReadOnly={false}
+        type="tel"
         value={phone}
         onChange={(e) => {
           let { value } = e.target;
